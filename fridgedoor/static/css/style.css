@@ -1,0 +1,28 @@
+body{
+  padding: 10px;
+  min-width: 550px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.navbar-text {
+  margin-right: 15px !important;
+}
+
+.app{
+  width: 19.8%;
+  float: left;
+  padding: 5px;
+  border-right: 1px solid #ccc;
+  display: none;
+}
+
+.pie {
+    width: 2125px;
+}
+.pie .app{
+    width: 425px;
+    white-space: nowrap;
+}

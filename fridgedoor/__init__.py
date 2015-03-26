@@ -10,5 +10,6 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('total_users', '/totalusers/')
     config.add_route('pageviews', '/pageviews/')
+    config.add_route('devices', '/devices/')
     config.scan()
     return config.make_wsgi_app()
