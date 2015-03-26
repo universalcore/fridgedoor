@@ -1,0 +1,25 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+<div class="row">
+<div class="col-xs-4 col-">
+<ul class="list-group">
+  <li>
+    <a href="{{'total_users'|route_url}}" class="list-group-item">Total Users</a>
+    <a href="#" class="list-group-item">Page Views (not implemented yet)</a>
+  </li>
+</ul>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+  gapi.analytics.ready(function() {
+    gapi.analytics.auth.authorize({
+      container: 'embed-api-auth-container',
+      clientid: '607034686826-asf8diukgvpl5qsrvfovf1114uqd1l6s.apps.googleusercontent.com',
+    });
+  });
+</script>
+{% endblock %}

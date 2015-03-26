@@ -23,28 +23,31 @@
   </head>
 
   <body>
-    <h1>Universal Core Dashboard</h1>
-    <div id="embed-api-auth-container"></div>
-    <div class="app" id="mama"><h2>MAMA</h2><h4>Total Users</h4></div>
-    <div class="app" id="gem"><h2>GEM</h2><h4>Total Users</h4></div>
-    <div class="app" id="ffl"><h2>FFL</h2><h4>Total Users</h4></div>
-    <div class="app" id="ebola"><h2>Ebola</h2><h4>Total Users</h4></div>
-    <div class="app" id="mnm"><h2>MnM</h2><h4>Total Users</h4></div>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Universal Core Fridge Door</a>
+    </div>
+    <p class="navbar-text navbar-right"><span id="embed-api-auth-container"></span></p>
+    </div>
+  </nav>
+  <h1><small>Because everything we care about goes on the fridge door.</small></h1>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  {% block content %}
+  {% endblock %}
 
-    <script>
-(function(w,d,s,g,js,fs){
-  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
-  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
-  js.src='https://apis.google.com/js/platform.js';
-  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
-}(window,document,'script'));
-</script>
-    <script src="/static/dashboard.js"></script>
+  <script src="//oss.maxcdn.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script>
+  (function(w,d,s,g,js,fs){
+    g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+    js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+    js.src='https://apis.google.com/js/platform.js';
+    fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+  }(window,document,'script'));
+  </script>
+  {% block js %}
+  {% endblock %}
   </body>
 </html>

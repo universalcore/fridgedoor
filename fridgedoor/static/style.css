@@ -1,5 +1,7 @@
+body{padding: 10px;}
+li {list-style-type: none;}
 .app{
-  width: 19.9%;
+  width: 19.8%;
   float: left;
   padding: 5px;
   border-right: 1px solid #ccc;
