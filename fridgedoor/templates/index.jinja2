@@ -1,12 +1,14 @@
 {% extends "base.jinja2" %}
 
 {% block content %}
+<h1><small>Because everything we care about goes on the fridge door.</small></h1>
+
 <div class="row">
 <div class="col-xs-4 col-">
 <ul class="list-group">
   <li>
     <a href="{{'total_users'|route_url}}" class="list-group-item">Total Users</a>
-    <a href="#" class="list-group-item">Page Views (not implemented yet)</a>
+    <a href="{{'pageviews'|route_url}}" class="list-group-item">Page Views</a>
   </li>
 </ul>
 </div>

@@ -1,0 +1,13 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+  <div class="app" id="mama"><h2>MAMA</h2><h4>Total Page Views</h4></div>
+  <div class="app" id="gem"><h2>GEM</h2><h4>Total Page Views</h4></div>
+  <div class="app" id="ffl"><h2>FFL</h2><h4>Total Page Views</h4></div>
+  <div class="app" id="ebola"><h2>Ebola</h2><h4>Total Page Views</h4></div>
+  <div class="app" id="mnm"><h2>MnM</h2><h4>Total Page Views</h4></div>
+{% endblock %}
+
+{% block js %}
+  <script src="/static/pageviews.js?v=1"></script>
+{% endblock %}
