@@ -20,6 +20,7 @@ li {
   list-style-type: none;
 }
 
+.navbar-brand {line-height: 16px;}
 .navbar-header span{
     font-weight: bold;
     font-size: 22px;
@@ -42,7 +43,7 @@ li {
 
 .app{width: 19.8%;float: left;padding: 5px;border-right: 1px solid #ccc;display: none;}
 
-.pie {width: 2125px;}
+.pie, .pv-weekly {width: 2125px;}
   .pie .app{width: 425px; white-space: nowrap;}
 
 .pv-weekly{}

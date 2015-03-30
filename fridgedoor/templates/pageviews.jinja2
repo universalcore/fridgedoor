@@ -1,5 +1,13 @@
 {% extends "base.jinja2" %}
 
+{% block nav %}
+<ul class="nav navbar-nav">
+  <li><a href="{{'pageviews_weekly'|route_url}}">Weekly</a></li>
+  <li><a href="{{'pageviews_monthly'|route_url}}">Monthly</a></li>
+  <li class="active"><a href="#">Totals</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
   <div class="app" id="mama"><h2>MAMA</h2><h4>Total Page Views</h4></div>
   <div class="app" id="gem"><h2>GEM</h2><h4>Total Page Views</h4></div>

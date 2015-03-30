@@ -10,6 +10,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('total_users', '/totalusers/')
     config.add_route('pageviews_weekly', '/pageviews/weekly/')
+    config.add_route('pageviews_monthly', '/pageviews/monthly/')
     config.add_route('pageviews', '/pageviews/')
     config.add_route('devices', '/devices/')
     config.scan()
