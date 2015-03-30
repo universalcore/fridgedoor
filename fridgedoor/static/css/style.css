@@ -40,18 +40,14 @@ li {
   margin-right: 15px !important;
 }
 
-.app{
-  width: 19.8%;
-  float: left;
-  padding: 5px;
-  border-right: 1px solid #ccc;
-  display: none;
-}
+.app{width: 19.8%;float: left;padding: 5px;border-right: 1px solid #ccc;display: none;}
 
-.pie {
-    width: 2125px;
-}
-.pie .app{
-    width: 425px;
-    white-space: nowrap;
-}
+.pie {width: 2125px;}
+  .pie .app{width: 425px; white-space: nowrap;}
+
+.pv-weekly{}
+  .pv-weekly .app{width: 425px; white-space: nowrap;}
+  .pv-weekly .chart{width: 420px; height: 210px; white-space: nowrap;}
+  .pv-weekly li{display: inline;padding-right: 10px;}
+    .pv-weekly li i{width: 10px; height: 10px; display: inline-block; margin-right: 5px;}
+  .pv-weekly .title{ padding-top: 20px;}

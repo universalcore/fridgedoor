@@ -32,3 +32,6 @@ profiles = [
     {'label': 'India', 'id': 97544501, 'parent': 'mnm'},
     //{'label': 'Guatemala', 'id': 99855203, 'parent': 'mnm'},
   ];
+
+//Dev Only - only show 1 graph
+//profiles = [{'label': 'India', 'id': 97544600, 'parent': 'mama'}]
