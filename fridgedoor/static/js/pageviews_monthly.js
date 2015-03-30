@@ -102,7 +102,7 @@ gapi.analytics.ready(function() {
       };
 
       $(parent).fadeIn();
-      new Chart(makeCanvas(chart_id)).Line(data);
+      new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
       generateLegend(legend_id, data.datasets);
 
     });
