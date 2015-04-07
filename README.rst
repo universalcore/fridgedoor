@@ -23,3 +23,5 @@ Install requirements::
 When complete, run the app::
 
   pserve development.ini --reload
+  
+You should now be able to access the site from http://localhost:8080
