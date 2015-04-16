@@ -21,7 +21,16 @@ gapi.analytics.ready(function() {
    * overlays session data for the current week over session data for the
    * previous week.
    */
+
+
   function renderWeekOverWeekChart(profile) {
+      // Trying to insert my button
+ /* var button = document.createElement("input");
+    button.type = "submit";
+    button.value = "More info";
+    button.setAttribute("id","info_button");
+    document.body.appendChild(button); */
+
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
     container.setAttribute("id", chart_id);
@@ -39,7 +48,7 @@ gapi.analytics.ready(function() {
     parent.appendChild(title);
     parent.appendChild(container);
     parent.appendChild(legend);
-    var ids = "ga:" + profile.id
+    var ids = "ga:" + profile.id;
 
     // Adjust `now` to experiment with different days, for testing only...
     var now = moment(); // .subtract(3, 'day');
@@ -100,5 +109,7 @@ gapi.analytics.ready(function() {
 
     });
   }
+
+
 
 });

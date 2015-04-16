@@ -11,5 +11,6 @@ from pyramid.view import view_config
     route_name='pageviews_monthly',
     renderer='templates/pageviews_monthly.jinja2')
 @view_config(route_name='devices', renderer='templates/devices.jinja2')
+@view_config(route_name= 'moreinfo', renderer = 'templates/moreinfo.jinja2')  # this line I added for more info  													# this line I added for moreinfo
 def view(request):
     return {}

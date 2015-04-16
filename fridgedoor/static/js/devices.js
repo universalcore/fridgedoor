@@ -10,7 +10,15 @@ gapi.analytics.ready(function() {
     time += 500;
   });
 
+  // Contains a profile parameter, that is where the unique id of the country gets taken
   function render_chart(profile){
+    // Trying to insert my button
+    var button = document.createElement("input");
+    button.type = "submit";
+    button.value = "More info";
+    button.setAttribute("id","info_button");
+    document.body.appendChild(button);
+
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
     container.setAttribute("id", chart_id);

@@ -13,5 +13,6 @@ def main(global_config, **settings):
     config.add_route('pageviews_monthly', '/pageviews/monthly/')
     config.add_route('pageviews', '/pageviews/')
     config.add_route('devices', '/devices/')
+    config.add_route('moreinfo', '/moreinfo/')
     config.scan()
     return config.make_wsgi_app()

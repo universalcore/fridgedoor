@@ -33,4 +33,4 @@ profiles = [
   ];
 
 //Dev Only - only show 1 graph
-//profiles = [{'label': 'India', 'id': 97544600, 'parent': 'mama'}]
+profiles = [{'label': 'India', 'id': 97544600, 'parent': 'mama'}]

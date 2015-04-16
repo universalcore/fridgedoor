@@ -1,5 +1,5 @@
 gapi.analytics.ready(function() {
-  gapi.analytics.auth.authorize({
+    gapi.analytics.auth.authorize({
     container: 'embed-api-auth-container',
     clientid: '607034686826-asf8diukgvpl5qsrvfovf1114uqd1l6s.apps.googleusercontent.com',
   });
@@ -10,6 +10,7 @@ gapi.analytics.ready(function() {
     time += 500;
   });
 
+  // Contains a profile parameter, that is where the unique id of the country gets taken
   function render_chart(profile){
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
