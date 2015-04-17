@@ -4,11 +4,10 @@ gapi.analytics.ready(function() {
     clientid: '607034686826-asf8diukgvpl5qsrvfovf1114uqd1l6s.apps.googleusercontent.com',
   });
 
-  var time = 500;
-  profiles.forEach(function(p) {
-    setTimeout( function(){ renderWeekOverWeekChart(p);}, time)
-    time += 500;
-  });
+  renderWeekOverWeekChart(profile);
+  renderWeekOverWeekChartMonth(profile);
+  renderPagesPerSessionChartDaily(profile);
+  renderTopBrowsersChart(profile);
 
   	// Set some global Chart.js defaults.
   	Chart.defaults.global.animationSteps = 10;
@@ -31,16 +30,14 @@ gapi.analytics.ready(function() {
 
     var title = document.createElement('div');
     title.setAttribute("class", "title");
-    title.innerHTML = profile.label;
+    title.innerHTML = "Weekly Pageviews";
 
     var legend_id = "legend-"+profile.id;
     var legend = document.createElement('div');
     legend.setAttribute("id", legend_id);
 
     var parent = document.getElementById(profile.parent);
-    parent.appendChild(title);
     parent.appendChild(container);
-    parent.appendChild(legend);
     var ids = "ga:" + profile.id;
 
     // Adjust `now` to experiment with different days, for testing only...
@@ -98,17 +95,12 @@ gapi.analytics.ready(function() {
 
       $(parent).fadeIn();
       new Chart(makeCanvas(chart_id)).Line(data);
+      $(container).prepend(title);
+      $(container).append(legend);
       generateLegend(legend_id, data.datasets);
 
     });
   }
-
-  /**HERE ARE THE MONTHLY GRAPHS**/
-  	var time = 500;
-  	profiles.forEach(function(p) {
-   		setTimeout( function(){ renderWeekOverWeekChartMonth(p);}, time)
-    	time += 500;
-	});
 
 
  // A graph for monthly
@@ -121,16 +113,14 @@ gapi.analytics.ready(function() {
 
     	var title = document.createElement('div');
     	title.setAttribute("class", "title");
-    	title.innerHTML = profile.label;
+    	title.innerHTML = "Monthly Pageviews";
 
 	    var legend_id = "legend2-"+profile.id;
 	    var legend = document.createElement('div');
 	    legend.setAttribute("id", legend_id);
 
 	    var parent = document.getElementById(profile.parent);
-	    parent.appendChild(title);
 	    parent.appendChild(container);
-	    parent.appendChild(legend);
  	    var ids = "ga:" + profile.id
 
 	    // Adjust `now` to experiment with different days, for testing only...
@@ -195,20 +185,15 @@ gapi.analytics.ready(function() {
 
       	$(parent).fadeIn();
       	new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
+        $(container).prepend(title);
+        $(container).append(legend);
       	generateLegend(legend_id, data.datasets);
 
     });
   }
 
-  var time = 500;
-  profiles.forEach(function(p) {
-   	setTimeout( function(){ renderPagesPerSessionChartDaily(p);}, time)
-    time += 500;
-  });
-
-
   function renderPagesPerSessionChartDaily(profile){
-    
+
     var container = document.createElement('div');
     var chart_id = "chart3-"+profile.id;
 	container.setAttribute("id", chart_id);
@@ -216,16 +201,15 @@ gapi.analytics.ready(function() {
 
     var title = document.createElement('div');
     title.setAttribute("class", "title");
-    title.innerHTML = profile.label;
+    title.innerHTML = "Weekly Sessions";
 
 	var legend_id = "legend3-"+profile.id;
 	var legend = document.createElement('div');
 	legend.setAttribute("id", legend_id);
 
     var parent = document.getElementById(profile.parent);
-    parent.appendChild(title);
     parent.appendChild(container);
-    parent.appendChild(legend);
+
     var ids = "ga:" + profile.id;
 
     var now =moment();
@@ -283,18 +267,12 @@ gapi.analytics.ready(function() {
 
       $(parent).fadeIn();
       new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
+      $(container).prepend(title);
+      $(container).append(legend);
       generateLegend(legend_id, data.datasets);
 
     });
   }// end of session per chart function
-
-  // top browser pie
-	var time = 500;
-  	profiles.forEach(function(p) {
-   	setTimeout( function(){ renderTopBrowsersChart(p);}, time)
-    time += 500;
-	});
-
 
     function renderTopBrowsersChart(profile) {
     	var container = document.createElement('div');
@@ -304,16 +282,15 @@ gapi.analytics.ready(function() {
 
     	var title = document.createElement('div');
     	title.setAttribute("class", "title");
-    	title.innerHTML = profile.label;
+    	title.innerHTML = "Top Browsers";
 
 	    var legend_id = "legend4-"+profile.id;
 	    var legend = document.createElement('div');
 	    legend.setAttribute("id", legend_id);
 
 	    var parent = document.getElementById(profile.parent);
-	    parent.appendChild(title);
 	    parent.appendChild(container);
-	    parent.appendChild(legend);
+
  	    var ids = "ga:" + profile.id
 
 	    query({
@@ -334,6 +311,8 @@ gapi.analytics.ready(function() {
 
       	$(parent).fadeIn();
       	new Chart(makeCanvas(chart_id)).Doughnut(data);
+        $(container).prepend(title);
+        $(container).append(legend);
       	generateLegend(legend_id, data);
 
 /*

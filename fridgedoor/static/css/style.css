@@ -52,3 +52,9 @@ li {
   .pv-weekly li{display: inline;padding-right: 10px;}
     .pv-weekly li i{width: 10px; height: 10px; display: inline-block; margin-right: 5px;}
   .pv-weekly .title{ padding-top: 20px;}
+
+.moreinfo {}
+  .moreinfo .app{width: 1024px; white-space: nowrap;}
+  .moreinfo .chart{width: 420px; height: 210px; white-space: nowrap;float: left; margin-bottom: 60px;}
+  .moreinfo li{display: inline;padding-right: 10px;}
+    .moreinfo li i{width: 10px; height: 10px; display: inline-block; margin-right: 5px;}

@@ -4,20 +4,19 @@
 <ul class="nav navbar-nav">
   <li><a href="{{'pageviews_weekly'|route_url}}">Weekly</a></li>
   <li><a href="{{'pageviews'|route_url}}">Totals</a></li>
-  <li><a href="{{'moreinfo'|route_url}}"></a></li>
+  <li class="active"><a href="#">More info</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<div class="pv-weekly">
-  <div class="app" id="mama"><h2>MAMA</h2></div>
-  <div class="app" id="gem"><h2>GEM</h2></div>
-  <div class="app" id="ffl"><h2>FFL</h2></div>
-  <div class="app" id="ebola"><h2>Ebola</h2></div>
-  <div class="app" id="mnm"><h2>MnM</h2></div>
+<div class="moreinfo">
+  <div class="app" id="main"></div>
 </div>
 {% endblock %}
 
 {% block js %}
+  <script type="text/javascript">
+  profile = {'label': '', 'id': {{profile_id}}, 'parent': 'main'}
+  </script>
   <script src="/static/js/moreinfo.js?v=1"></script>
 {% endblock %}
