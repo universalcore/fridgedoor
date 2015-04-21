@@ -1,3 +1,17 @@
+
+var countryName; 
+for (i=0; i < profiles.length ; i++){
+
+	if ((profiles[i]).id === profile.id){
+		countryName = profiles[i].label;
+		break;		
+	}
+}
+$('#heading').html(countryName);
+
+console.log(heading);
+
+
 gapi.analytics.ready(function() {
   gapi.analytics.auth.authorize({
     container: 'embed-api-auth-container',
