@@ -24,12 +24,6 @@ gapi.analytics.ready(function() {
 
 
   function renderWeekOverWeekChart(profile) {
-      // Trying to insert my button
- /* var button = document.createElement("input");
-    button.type = "submit";
-    button.value = "More info";
-    button.setAttribute("id","info_button");
-    document.body.appendChild(button); */
 
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
