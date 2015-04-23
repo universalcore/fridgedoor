@@ -101,7 +101,7 @@ gapi.analytics.ready(function() {
       };
 
       $(parent).fadeIn();
-      new Chart(makeCanvas(chart_id)).Line(data);
+      new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1000, scaleSteps: 5});
       $('#'+chart_id).before(link);
       generateLegend(legend_id, data.datasets);
 
