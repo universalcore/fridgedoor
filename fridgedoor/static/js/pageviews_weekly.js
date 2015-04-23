@@ -55,7 +55,7 @@ gapi.analytics.ready(function() {
       'dimensions': 'ga:date,ga:nthDay',
       'metrics': 'ga:pageviews',
       'start-date': moment(now).subtract(1, 'day').day(1).format('YYYY-MM-DD'),
-      'end-date': moment(now).format('YYYY-MM-DD')
+      'end-date': moment(now).subtract(1, 'day').format('YYYY-MM-DD')
     });
 
     var lastWeek = query({
@@ -101,7 +101,7 @@ gapi.analytics.ready(function() {
       };
 
       $(parent).fadeIn();
-      new Chart(makeCanvas(chart_id)).Line(data);
+      new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1000, scaleSteps: 5});
       $('#'+chart_id).before(link);
       generateLegend(legend_id, data.datasets);
 
