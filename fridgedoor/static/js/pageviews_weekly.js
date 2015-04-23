@@ -55,7 +55,7 @@ gapi.analytics.ready(function() {
       'dimensions': 'ga:date,ga:nthDay',
       'metrics': 'ga:pageviews',
       'start-date': moment(now).subtract(1, 'day').day(1).format('YYYY-MM-DD'),
-      'end-date': moment(now).format('YYYY-MM-DD')
+      'end-date': moment(now).subtract(1, 'day').format('YYYY-MM-DD')
     });
 
     var lastWeek = query({

@@ -60,7 +60,7 @@ gapi.analytics.ready(function() {
     	'dimensions': 'ga:date,ga:nthDay',
     	'metrics': 'ga:pageviews',
     	'start-date': moment(now).subtract(1, 'day').day(1).format('YYYY-MM-DD'),
-    	'end-date': moment(now).format('YYYY-MM-DD')
+    	'end-date': moment(now).subtract(1, 'day').format('YYYY-MM-DD')
     });
 
     var lastWeek = query({
@@ -232,7 +232,7 @@ function renderPagesPerSessionChartDaily(profile){
 		'dimensions': 'ga:date,ga:nthDay',
 		'metrics': 'ga:sessions',
 		'start-date': moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD'),
-		'end-date': moment(now).format('YYYY-MM-DD')
+		'end-date': moment(now).subtract(1, 'day').format('YYYY-MM-DD')
 	});
 
 	var lastWeek = query({
@@ -278,7 +278,7 @@ function renderPagesPerSessionChartDaily(profile){
 		};
 
 		$(parent).fadeIn();
-		new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
+		new Chart(makeCanvas(chart_id)).Line(data);
 		$(container).prepend(title);
 		$(container).append(legend);
 		generateLegend(legend_id, data.datasets);
