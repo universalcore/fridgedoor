@@ -13,3 +13,8 @@ from pyramid.view import view_config
 @view_config(route_name='devices', renderer='templates/devices.jinja2')
 def view(request):
     return {}
+
+
+@view_config(route_name='moreinfo', renderer='templates/moreinfo.jinja2')
+def moreinfo(request):
+    return {'profile_id': request.matchdict['profile_id']}

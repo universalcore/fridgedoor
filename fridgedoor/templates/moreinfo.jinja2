@@ -1,0 +1,21 @@
+{% extends "base.jinja2" %}
+
+{% block nav %}
+<ul class="nav navbar-nav">
+  <li class="active"><a href="#">More info</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2 id="heading"></h2>
+<div class="moreinfo">
+  <div class="app" id="main"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript">
+  profile = {'label': '', 'id': {{profile_id}}, 'parent': 'main'}
+  </script>
+  <script src="/static/js/moreinfo.js?v=1"></script>
+{% endblock %}

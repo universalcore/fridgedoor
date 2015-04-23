@@ -22,6 +22,11 @@ gapi.analytics.ready(function() {
    * previous week.
    */
   function renderWeekOverWeekChart(profile) {
+    // Creating a link
+    var link = document.createElement("a");
+    link.setAttribute("href", "/moreinfo/" + profile.id);
+    link.innerHTML = profile.label;
+    
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
     container.setAttribute("id", chart_id);
@@ -36,7 +41,7 @@ gapi.analytics.ready(function() {
     legend.setAttribute("id", legend_id);
 
     var parent = document.getElementById(profile.parent);
-    parent.appendChild(title);
+ //   parent.appendChild(title);
     parent.appendChild(container);
     parent.appendChild(legend);
     var ids = "ga:" + profile.id
@@ -101,9 +106,12 @@ gapi.analytics.ready(function() {
         ]
       };
 
+
       $(parent).fadeIn();
       new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
+      $('#'+chart_id).before(link);
       generateLegend(legend_id, data.datasets);
+
 
     });
   }

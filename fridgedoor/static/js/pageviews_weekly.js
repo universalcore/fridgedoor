@@ -21,7 +21,13 @@ gapi.analytics.ready(function() {
    * overlays session data for the current week over session data for the
    * previous week.
    */
+
   function renderWeekOverWeekChart(profile) {
+    // Creating a link
+    var link = document.createElement("a");
+    link.setAttribute("href", "/moreinfo/" + profile.id);
+    link.innerHTML = profile.label;
+
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
     container.setAttribute("id", chart_id);
@@ -36,10 +42,10 @@ gapi.analytics.ready(function() {
     legend.setAttribute("id", legend_id);
 
     var parent = document.getElementById(profile.parent);
-    parent.appendChild(title);
+//    parent.appendChild(title);
     parent.appendChild(container);
     parent.appendChild(legend);
-    var ids = "ga:" + profile.id
+    var ids = "ga:" + profile.id;
 
     // Adjust `now` to experiment with different days, for testing only...
     var now = moment(); // .subtract(3, 'day');
@@ -49,7 +55,7 @@ gapi.analytics.ready(function() {
       'dimensions': 'ga:date,ga:nthDay',
       'metrics': 'ga:pageviews',
       'start-date': moment(now).subtract(1, 'day').day(1).format('YYYY-MM-DD'),
-      'end-date': moment(now).format('YYYY-MM-DD')
+      'end-date': moment(now).subtract(1, 'day').format('YYYY-MM-DD')
     });
 
     var lastWeek = query({
@@ -95,10 +101,12 @@ gapi.analytics.ready(function() {
       };
 
       $(parent).fadeIn();
-      new Chart(makeCanvas(chart_id)).Line(data);
+      new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1000, scaleSteps: 5});
+      $('#'+chart_id).before(link);
       generateLegend(legend_id, data.datasets);
 
     });
   }
+
 
 });
