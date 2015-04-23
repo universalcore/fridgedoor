@@ -20,7 +20,9 @@ gapi.analytics.ready(function() {
 	renderWeekOverWeekChartMonth(profile);
 	renderPagesPerSessionChartDaily(profile);
 	renderTopBrowsersChart(profile);
-
+	render_chartTotalUsers(profile);
+	render_chartTotalPageviews(profile);
+	
   	// Set some global Chart.js defaults.
   	Chart.defaults.global.animationSteps = 10;
   	Chart.defaults.global.animationEasing = 'easeInOutQuart';
@@ -327,6 +329,73 @@ function renderTopBrowsersChart(profile) {
 		$(container).append(legend);
 		generateLegend(legend_id, data);
 
+	});
+}
+
+function render_chartTotalUsers(profile){
+
+	var container = document.createElement('div');
+	var chart_id = "chart5-"+profile.id;
+	container.setAttribute("id", chart_id);
+	container.setAttribute("class", "chart");
+
+	var title = document.createElement('div');
+	title.setAttribute("class", "title");
+	title.innerHTML = "Total Users";
+
+	var parent = document.getElementById(profile.parent);
+	parent.appendChild(container);
+	var dataChart = new gapi.analytics.googleCharts.DataChart({
+		query: {
+			metrics: 'ga:users',
+			'start-date': '2014-01-01',
+			'end-date': 'yesterday'
+		},
+		chart: {
+			container: chart_id,
+			type: 'TABLE'
+		}
+	});
+	dataChart.set({query: {ids: "ga:"+profile.id}}).execute();
+	dataChart.on('success', function(){
+		$('#'+chart_id+' .gapi-analytics-data-chart-styles-table-th').html(profile.label);
+		var result = $('#'+chart_id+' .gapi-analytics-data-chart-styles-table-td');
+		result.html(parseInt(result.html()).toLocaleString());
+		$(parent).fadeIn();
+		$(container).prepend(title);
+	});
+}
+
+function render_chartTotalPageviews(profile){
+	var container = document.createElement('div');
+	var chart_id = "chart6-"+profile.id;
+	container.setAttribute("id", chart_id);
+	container.setAttribute("class", "chart");
+
+	var title = document.createElement('div');
+	title.setAttribute("class", "title");
+	title.innerHTML = "Total Pageviews";
+
+	var parent = document.getElementById(profile.parent);
+	parent.appendChild(container);
+	var dataChart = new gapi.analytics.googleCharts.DataChart({
+		query: {
+			metrics: 'ga:pageviews',
+			'start-date': '2014-01-01',
+			'end-date': 'yesterday'
+		},
+		chart: {
+			container: chart_id,
+			type: 'TABLE'
+		}
+	});
+	dataChart.set({query: {ids: "ga:"+profile.id}}).execute();
+	dataChart.on('success', function(){
+		$('#'+chart_id+' .gapi-analytics-data-chart-styles-table-th').html(profile.label)
+		var result = $('#'+chart_id+' .gapi-analytics-data-chart-styles-table-td');
+		result.html(parseInt(result.html()).toLocaleString());
+		$(parent).fadeIn();
+		$(container).prepend(title);
 	});
 }
 
