@@ -1,10 +1,10 @@
 
-var countryName; 
+var countryName;
 for (i=0; i < profiles.length ; i++){
 
 	if ((profiles[i]).id === profile.id){
 		countryName = profiles[i].label;
-		break;		
+		break;
 	}
 }
 $('#heading').html(countryName);
@@ -34,7 +34,7 @@ gapi.analytics.ready(function() {
   	 */
 
   	 function renderWeekOverWeekChart(profile) {
-  	 	
+
   	 	var container = document.createElement('div');
   	 	var chart_id = "chart-"+profile.id;
   	 	container.setAttribute("id", chart_id);
@@ -196,7 +196,7 @@ gapi.analytics.ready(function() {
       };
 
       $(parent).fadeIn();
-      new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 2000, scaleSteps: 5});
+      new Chart(makeCanvas(chart_id)).Line(data);
       $(container).prepend(title);
       $(container).append(legend);
       generateLegend(legend_id, data.datasets);
@@ -226,7 +226,7 @@ function renderPagesPerSessionChartDaily(profile){
 
 	var now =moment();
 
-	
+
 	var thisWeek = query({
 		'ids': ids,
 		'dimensions': 'ga:date,ga:nthDay',
