@@ -22,11 +22,12 @@ gapi.analytics.ready(function() {
    * previous week.
    */
 
-  function renderWeekOverWeekChart(profile) {
+   function renderWeekOverWeekChart(profile) {
     // Creating a link
     var link = document.createElement("a");
     link.setAttribute("href", "/moreinfo/" + profile.id);
     link.innerHTML = profile.label;
+    link.setAttribute("title","Go to more info page");
 
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
@@ -37,15 +38,16 @@ gapi.analytics.ready(function() {
     title.setAttribute("class", "title");
     title.innerHTML = profile.label;
 
+
     var legend_id = "legend-"+profile.id;
     var legend = document.createElement('div');
     legend.setAttribute("id", legend_id);
 
     var parent = document.getElementById(profile.parent);
 //    parent.appendChild(title);
-    parent.appendChild(container);
-    parent.appendChild(legend);
-    var ids = "ga:" + profile.id;
+parent.appendChild(container);
+parent.appendChild(legend);
+var ids = "ga:" + profile.id;
 
     // Adjust `now` to experiment with different days, for testing only...
     var now = moment(); // .subtract(3, 'day');
@@ -63,9 +65,9 @@ gapi.analytics.ready(function() {
       'dimensions': 'ga:date,ga:nthDay',
       'metrics': 'ga:pageviews',
       'start-date': moment(now).subtract(1, 'day').day(1).subtract(1, 'week')
-          .format('YYYY-MM-DD'),
+      .format('YYYY-MM-DD'),
       'end-date': moment(now).subtract(1, 'day').day(7).subtract(1, 'week')
-          .format('YYYY-MM-DD')
+      .format('YYYY-MM-DD')
     });
 
     Promise.all([thisWeek, lastWeek]).then(function(results) {
@@ -81,32 +83,33 @@ gapi.analytics.ready(function() {
       var data = {
         labels : labels,
         datasets : [
-          {
-            label: 'Last Week',
-            fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(220,220,220,1)",
-            pointColor : "rgba(220,220,220,1)",
-            pointStrokeColor : "#fff",
-            data : data2
-          },
-          {
-            label: 'This Week',
-            fillColor : "rgba(151,187,205,0.5)",
-            strokeColor : "rgba(151,187,205,1)",
-            pointColor : "rgba(151,187,205,1)",
-            pointStrokeColor : "#fff",
-            data : data1
-          }
+        {
+          label: 'Last Week',
+          fillColor : "rgba(220,220,220,0.5)",
+          strokeColor : "rgba(220,220,220,1)",
+          pointColor : "rgba(220,220,220,1)",
+          pointStrokeColor : "#fff",
+          data : data2
+        },
+        {
+          label: 'This Week',
+          fillColor : "rgba(151,187,205,0.5)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          data : data1
+        }
         ]
       };
+
 
       $(parent).fadeIn();
       new Chart(makeCanvas(chart_id)).Line(data, {scaleOverride: true, scaleStartValue: 0, scaleStepWidth: 1000, scaleSteps: 5});
       $('#'+chart_id).before(link);
       generateLegend(legend_id, data.datasets);
 
+      
     });
-  }
-
+}
 
 });
