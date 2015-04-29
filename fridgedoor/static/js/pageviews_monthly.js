@@ -21,11 +21,14 @@ gapi.analytics.ready(function() {
    * overlays session data for the current week over session data for the
    * previous week.
    */
-  function renderWeekOverWeekChart(profile) {
+
+   function renderWeekOverWeekChart(profile) {
     // Creating a link
     var link = document.createElement("a");
     link.setAttribute("href", "/moreinfo/" + profile.id);
     link.innerHTML = profile.label;
+    link.setAttribute("title","Go to more info page");
+
     
     var container = document.createElement('div');
     var chart_id = "chart-"+profile.id;
@@ -42,9 +45,9 @@ gapi.analytics.ready(function() {
 
     var parent = document.getElementById(profile.parent);
  //   parent.appendChild(title);
-    parent.appendChild(container);
-    parent.appendChild(legend);
-    var ids = "ga:" + profile.id
+ parent.appendChild(container);
+ parent.appendChild(legend);
+ var ids = "ga:" + profile.id
 
     // Adjust `now` to experiment with different days, for testing only...
     var now = moment(); // .subtract(3, 'day');
@@ -87,22 +90,22 @@ gapi.analytics.ready(function() {
       var data = {
         labels : labels,
         datasets : [
-          {
-            label: moment(now).subtract(1, 'month').format('MMMM'),
-            fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(220,220,220,1)",
-            pointColor : "rgba(220,220,220,1)",
-            pointStrokeColor : "#fff",
-            data : data2
-          },
-          {
-            label: moment(now).format('MMMM'),
-            fillColor : "rgba(151,187,205,0.5)",
-            strokeColor : "rgba(151,187,205,1)",
-            pointColor : "rgba(151,187,205,1)",
-            pointStrokeColor : "#fff",
-            data : data1
-          }
+        {
+          label: moment(now).subtract(1, 'month').format('MMMM'),
+          fillColor : "rgba(220,220,220,0.5)",
+          strokeColor : "rgba(220,220,220,1)",
+          pointColor : "rgba(220,220,220,1)",
+          pointStrokeColor : "#fff",
+          data : data2
+        },
+        {
+          label: moment(now).format('MMMM'),
+          fillColor : "rgba(151,187,205,0.5)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          data : data1
+        }
         ]
       };
 
@@ -114,6 +117,6 @@ gapi.analytics.ready(function() {
 
 
     });
-  }
+}
 
 });
